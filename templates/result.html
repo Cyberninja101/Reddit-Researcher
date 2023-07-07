@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>Reddit Researcher</title>
+        <style>
+            body {
+              font-family: 'Poppins', sans-serif;
+            }
+
+            h1 {
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+            }
+
+            h2 {
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+            }
+
+            table {
+              font-family: 'Poppins', sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+              overflow-y: scroll;
+            }
+            
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+              height: 120px;
+              overflow-y: scroll;
+            }
+            
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+
+            div {
+              width: 200px;
+              height: 100%;
+              margin: 0;
+              padding: 0;
+              overflow: auto;
+            }
+
+            
+            </style>
+    </head>
+    <body>
+        <h1>Reddit Researcher</h1>
+        <h2>Results</h2>
+        
+        <a href="./static/reddit.csv" download="reddit.csv">
+          <p>Download Data</p>
+        </a>
+        <!-- Table containing all of the data -->
+        <table>
+            <tr>
+                {% for column in result.columns %}
+                <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+            {% for idx in result.index %}
+            <tr>
+
+                {% for column in result.columns %}
+                <td><div>{{ result.at[idx, column] }}</div=></td>
+                {% endfor %}
+
+            </tr>
+            {% endfor %}
+        </table>
+        
+
+        <!-- <ul>
+        {% for i in result["title"] %}
+        
+        <li>{{ i }}</li>
+
+        {% endfor %}
+        </ul> -->
+        
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>Reddit Researcher</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+        <!-- Using AJAX to send info from JS to python -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script type = "text/javascript" 
+            src = "{{ url_for('static', filename = 'home.js') }}" >
+        </script>
+    </head>
+    <body>
+        <img src="../static/Reddit Researcher logo.png" class="center">
+        <form action="/result" method="POST">
+            <label for="title_phrase" class="form_stuff">Subreddit:</label>
+            <!-- The title_phrase url parameter is used as the default value  -->
+            <input type="text" id="subreddit" name="subreddit" placeholder="Search for a subreddit"/>
+            <button class="button" type="submit" value="Submit" id="submit_button" onclick="this.classList.toggle('button--loading')"><span class="button__text">Submit</span></button>
+            <!-- It was: <input type="submit" value="Submit and Refresh" style="display: none" /> -->
+        </form>
+        
+        <div class="button-group">
+            
+            <a href=# id=top><button id="button_top">Top</button></a>
+            <a href=# id=hot><button id="button_hot">Hot</button></a>
+            <a href=# id=new><button id="button_new">New</button></a>
+            <a href=# id=rising><button id="button_rising">Rising</button></a>
+            
+        </div>
+    </body>
+</html>
